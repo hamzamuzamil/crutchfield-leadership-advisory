@@ -1,67 +1,58 @@
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const TESTIMONIALS = [
+const testimonials = [
   {
-    quote:
-      "Mark quickly builds trust in even the most challenging environments. His clarity and delivery focus yielded remarkable results across our transformation programme.",
-    author: "Sarah R., Former NHS Digital Programme Director",
-    avatar: "https://randomuser.me/api/portraits/women/56.jpg",
+    name: "Sarah Thompson",
+    title: "Director of Transformation, NHS",
+    text: "Mark guided our leadership through a pivotal digital change. His clarity and ability to foster trust enabled us to deliver on ambitious outcomes—on time, and together.",
+    image: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&w=75&q=80",
   },
   {
-    quote:
-      "I've never worked with anyone who understands the human side of strategy like Mark. Our team's confidence and clarity improved immediately.",
-    author: "James B., Senior Advisor, UK Government",
-    avatar: "https://randomuser.me/api/portraits/men/41.jpg",
+    name: "Leslie McMahon",
+    title: "COO, Vodafone UK",
+    text: "Insightful, laser-focused, and supportive—Mark brings pragmatic solutions to complex challenges and is the leader you want in your corner.",
+    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&w=75&q=80",
   },
   {
-    quote:
-      "Mark's EQ and judgment are matched only by his relentless focus on delivery. If your programme is complex, he is the advisor you want.",
-    author: "Elena H., Transformation Lead, Vodafone",
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    name: "James Lee",
+    title: "Head of Programmes, UN",
+    text: "His calm, executive manner was critical in aligning diverse teams globally. Mark delivers trust and impact, every single time.",
+    image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&w=75&q=80",
   },
 ];
 
 const TestimonialsCarousel = () => {
   const [idx, setIdx] = useState(0);
 
-  const next = () => setIdx((i) => (i + 1) % TESTIMONIALS.length);
-  const prev = () => setIdx((i) => (i + TESTIMONIALS.length - 1) % TESTIMONIALS.length);
+  const prev = () => setIdx((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  const next = () => setIdx((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  const t = testimonials[idx];
 
   return (
-    <section className="w-full bg-slate-950/90 py-14 border-b border-slate-800 animate-fade-in">
-      <div className="max-w-3xl mx-auto px-6 flex flex-col items-center">
-        <h3 className="font-playfair text-2xl text-gold font-bold mb-7 text-center animate-fade-in">Results & Client Stories</h3>
-        <div className="relative flex flex-col items-center w-full animate-scale-in">
-          <div className="glass-panel-dark border border-slate-800 rounded-2xl shadow-2xl p-8 min-h-[180px] transition transform duration-200">
-            <p className="text-gold text-lg font-playfair mb-4">&ldquo;{TESTIMONIALS[idx].quote}&rdquo;</p>
-            <div className="flex items-center gap-3">
-              <img
-                src={TESTIMONIALS[idx].avatar}
-                alt={TESTIMONIALS[idx].author + " avatar"}
-                className="w-10 h-10 rounded-full border border-gold/50 shadow"
-                loading="lazy"
-              />
-              <span className="block text-white text-sm font-sans">— {TESTIMONIALS[idx].author}</span>
-            </div>
+    <section id="testimonials" className="py-16 px-4">
+      <div className="max-w-3xl mx-auto glass-panel-dark rounded-2xl shadow-2xl py-12 px-7 md:px-14 flex flex-col items-center animate-fade-in">
+        <div className="flex items-center gap-4 mb-5">
+          <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gold/50 shadow-lg">
+            <img src={t.image} alt={t.name} className="object-cover w-full h-full" loading="lazy" />
           </div>
-          <div className="flex gap-6 mt-7">
-            <button
-              aria-label="Previous"
-              onClick={prev}
-              className="w-10 h-10 rounded-full flex items-center justify-center border border-gold bg-slate-900/70 text-gold hover:bg-gold/30 hover:text-slate-900 transition shadow"
-            >
-              <ChevronLeft size={22} />
-            </button>
-            <button
-              aria-label="Next"
-              onClick={next}
-              className="w-10 h-10 rounded-full flex items-center justify-center border border-gold bg-slate-900/70 text-gold hover:bg-gold/30 hover:text-slate-900 transition shadow"
-            >
-              <ChevronRight size={22} />
-            </button>
+          <div>
+            <div className="font-playfair text-lg text-gold font-bold">{t.name}</div>
+            <div className="text-gray-400 text-sm">{t.title}</div>
           </div>
+        </div>
+        <blockquote className="text-xl text-gray-100 italic mb-2 text-center">{`“${t.text}”`}</blockquote>
+        <div className="flex gap-2 mt-8">
+          <button
+            onClick={prev}
+            aria-label="Previous testimonial"
+            className="rounded-full bg-slate-800/75 border border-gold/20 p-2 text-gold hover:bg-slate-900 transition"
+          >&lt;</button>
+          <button
+            onClick={next}
+            aria-label="Next testimonial"
+            className="rounded-full bg-slate-800/75 border border-gold/20 p-2 text-gold hover:bg-slate-900 transition"
+          >&gt;</button>
         </div>
       </div>
     </section>

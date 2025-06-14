@@ -1,61 +1,51 @@
 
-import { Linkedin } from "lucide-react";
-
-const POSTS = [
+const posts = [
   {
-    title: "Navigating Complexity Through Trust",
-    url: "https://www.linkedin.com/in/mark-crutchfield-leadership/",
-    date: "May 2024",
-    excerpt: "Why foundational trust is the decisive factor in program success—and how leaders can cultivate it.",
-    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?fit=crop&w=420&q=80",
+    title: "The Role of Trust in Large-Scale Change",
+    excerpt: "Building trust is the first act in every transformation. Here's how senior leaders can foster it across teams and partners.",
+    url: "https://www.linkedin.com/in/mark-crutchfield-leadership/detail/recent-activity/",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&w=355&q=80",
   },
   {
-    title: "From Strategy to Delivery: Making Change Stick",
-    url: "https://www.linkedin.com/in/mark-crutchfield-leadership/",
-    date: "April 2024",
-    excerpt: "Bridging the gap between PPT and real-world results. Insights from decades in the field.",
-    image: "https://images.unsplash.com/photo-1424746219973-8fe3bd07d8e3?fit=crop&w=420&q=80",
+    title: "Leading Through Complexity: Why Presence Wins",
+    excerpt: "Executive presence isn't about charisma—it's about clarity, candour, and calm in chaotic times. Practical lessons for modern leaders.",
+    url: "https://www.linkedin.com/in/mark-crutchfield-leadership/detail/recent-activity/",
+    image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&w=355&q=80",
   },
   {
-    title: "The Leadership ‘North Star’ in Digital Transformation",
-    url: "https://www.linkedin.com/in/mark-crutchfield-leadership/",
-    date: "March 2024",
-    excerpt: "Executive focus: aligning people, technology, and mission-critical outcomes.",
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?fit=crop&w=420&q=80",
+    title: "From Strategy to Delivery: Getting Programs Unstuck",
+    excerpt: "When major initiatives stall, reconnecting delivery to purpose unlocks action. My trusted tools for resetting the path.",
+    url: "https://www.linkedin.com/in/mark-crutchfield-leadership/detail/recent-activity/",
+    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&w=355&q=80",
   },
 ];
 
 const ThoughtLeadership = () => (
-  <section className="w-full bg-slate-950 py-14 animate-fade-in">
-    <div className="max-w-7xl mx-auto px-6">
-      <h3 className="font-playfair text-2xl font-bold text-gold mb-8 text-center animate-fade-in">Thought Leadership</h3>
-      <div className="grid md:grid-cols-3 gap-7">
-        {POSTS.map((post) => (
-          <a
-            href={post.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={post.title}
-            className="group glass-panel-dark rounded-xl p-6 border border-slate-700 hover:scale-105 transition shadow-xl flex flex-col h-full animate-scale-in"
-          >
-            <img
-              src={post.image}
-              alt={post.title + " preview"}
-              className="mb-3 w-full h-32 object-cover rounded-md border border-gold/10"
-              loading="lazy"
-            />
-            <div className="flex items-center gap-2 mb-2">
-              <Linkedin size={20} className="text-gold" />
-              <span className="text-xs text-slate-300">{post.date}</span>
-            </div>
-            <h4 className="font-playfair text-lg font-semibold text-gold mb-2 group-hover:underline underline-offset-4">
-              {post.title}
-            </h4>
-            <p className="text-white/90 text-sm flex-1">{post.excerpt}</p>
-            <span className="mt-5 text-gold text-sm font-medium group-hover:underline transition">Read Post</span>
-          </a>
-        ))}
-      </div>
+  <section id="thought-leadership" className="max-w-6xl mx-auto px-4 py-16 md:py-20">
+    <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gold mb-10 text-center">Thought Leadership</h2>
+    <div className="grid md:grid-cols-3 gap-8">
+      {posts.map((p, idx) => (
+        <a
+          href={p.url}
+          key={p.title}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="glass-panel-dark block rounded-2xl shadow-xl overflow-hidden hover:ring-2 hover:ring-gold transition-all animate-fade-in p-0"
+          style={{ animationDelay: `${80 + idx * 70}ms` }}
+        >
+          <img
+            src={p.image}
+            alt={p.title}
+            className="w-full h-40 object-cover"
+            loading="lazy"
+          />
+          <div className="p-5">
+            <div className="text-lg md:text-xl font-playfair text-gold font-semibold mb-1">{p.title}</div>
+            <div className="text-gray-200 mb-2 text-sm">{p.excerpt}</div>
+            <span className="text-gold text-xs font-medium underline hover:opacity-90">View on LinkedIn</span>
+          </div>
+        </a>
+      ))}
     </div>
   </section>
 );

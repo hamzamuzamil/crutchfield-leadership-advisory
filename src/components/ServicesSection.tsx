@@ -1,57 +1,37 @@
 
-import { Briefcase, Users, FileText } from "lucide-react";
-
 const services = [
   {
-    title: "Leadership advisory for complex programs",
-    icon: Users,
-    description:
-      "Hands-on, high-trust support for leaders tackling transformation at scale. Guiding strategy, delivery, and culture in high-complexity, high-impact settings.",
-    image: "https://images.unsplash.com/photo-1556740772-1a741367b93e?fit=crop&w=320&q=80",
+    title: "Leadership Advisory",
+    desc: "Highly bespoke, executive-level advisory for organizations leading transformation, high-stakes change, or scale. Candid, trusted counsel for senior decision-makers.",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&w=360&q=80",
   },
   {
-    title: "Trust-based transformation strategy",
-    icon: Briefcase,
-    description:
-      "Shaping change through resilience, transparency, and true stakeholder alignment. Frameworks for clarity and sustainable impact.",
-    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?fit=crop&w=320&q=80"
+    title: "Trust-based Transformation",
+    desc: "Strategic consulting on delivery approaches that create trust fast – across programs, boards, and external partners. Practical frameworks, real results.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&w=380&q=80",
   },
   {
-    title: "Executive coaching & delivery consulting",
-    icon: FileText,
-    description:
-      "Structured support for senior executives and programme teams. Accelerate results with tailored coaching and clear milestones.",
-    image: "https://images.unsplash.com/photo-1519817650390-64a93db511ed?fit=crop&w=320&q=80"
-  }
+    title: "Executive Coaching & Delivery",
+    desc: "1:1 coaching and embedded team consulting to empower delivery, build deep leadership confidence, and unblock complex programs.",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&w=380&q=80",
+  },
 ];
 
 const ServicesSection = () => (
-  <section className="bg-slate-900/80 backdrop-blur w-full py-14 border-b border-slate-800 animate-fade-in">
-    <div className="max-w-7xl mx-auto px-6">
-      <h3 className="font-playfair text-2xl md:text-3xl font-bold text-gold mb-8 text-center animate-fade-in">
-        Key Service Areas
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-        {services.map(({ title, icon: Icon, description, image }) => (
-          <div
-            key={title}
-            className="glass-panel-dark rounded-2xl p-6 shadow-xl border border-slate-800 bg-slate-950/60 flex flex-col items-start gap-4 hover:scale-105 transition transform duration-200 animate-scale-in"
-          >
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-36 object-cover rounded-lg mb-2 border border-gold/10"
-              loading="lazy"
-            />
-            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gold/20">
-              <Icon size={28} className="text-gold" />
-            </div>
-            <h4 className="font-playfair text-lg font-semibold text-gold mb-1">{title}</h4>
-            <p className="text-white/90 text-sm">{description}</p>
-          </div>
-        ))}
+  <section id="services" className="max-w-6xl mx-auto px-4 py-12 md:py-16 grid gap-10 md:grid-cols-3">
+    {services.map((svc, i) => (
+      <div
+        key={svc.title}
+        className="glass-panel-dark rounded-2xl shadow-2xl p-7 flex flex-col items-center animate-scale-in hover:scale-[1.04] transition"
+        style={{ animationDelay: `${60 + i * 60}ms` }}
+      >
+        <div className="w-[110px] h-[110px] mb-6 rounded-xl overflow-hidden shadow-lg border border-gold/10">
+          <img src={svc.image} alt={svc.title} className="object-cover w-full h-full" loading="lazy" />
+        </div>
+        <h3 className="font-playfair text-xl md:text-2xl font-bold text-gold mb-3 text-center">{svc.title}</h3>
+        <p className="text-base text-gray-200 text-center">{svc.desc}</p>
       </div>
-    </div>
+    ))}
   </section>
 );
 

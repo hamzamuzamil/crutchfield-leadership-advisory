@@ -10,21 +10,46 @@
     --foreground: 214 14% 90%;
 
     --gold: #bfa76a;
+
+    /* Additional dark-glass brand colors */
+    --glass-bg: 247 25% 18%;
+    --glass-dark-bg: 240 18% 7%;
+    --glass-gold: #bfa76a;
   }
 }
 
 /* Glass panels for dark mode */
 .glass-panel-dark {
-  background: linear-gradient(135deg, rgba(36,39,47,0.95) 80%, rgba(191,167,106,0.04) 100%);
+  background: rgba(40, 44, 55, 0.82);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-radius: 1.25rem;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.2);
-  border: 1.5px solid rgba(191,167,106,0.13);
+  box-shadow: 0 10px 40px 0 rgba(0,0,0,0.32), 0 1.5px 0 rgba(191,167,106,0.14);
+  border: 1.5px solid rgba(191,167,106,0.11);
+  border-top: 1.5px solid rgba(191,167,106,0.18);
 }
 
-.bg-glass-gradient-dark {
-  background: radial-gradient(circle at 20% 40%, rgba(191,167,106,0.08) 0px, rgba(30,30,35,0.97) 65%), linear-gradient(115deg, rgba(36,39,47,0.99) 70%, rgba(191,167,106,0.04) 100%);
+/* Animated glass/particle hero background */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 60%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-hero-anim {
+  background: radial-gradient(ellipse at 50% 50%, rgba(191,167,106,.10) 1%, rgba(0,0,0,0.04) 39%, rgba(30,30,36,0.97) 89%);
+  background-size: 280% 220%;
+  animation: gradientMove 14s ease-in-out infinite alternate;
+}
+
+/* Subtle particle movement for hero */
+@keyframes pulseMove {
+  0% { transform: scale(.92) translateY(0); }
+  100% { transform: scale(1.18) translateY(-30px); }
+}
+
+/* Animations (via Tailwind, fallback for glass transitions) */
+.hero-title {
+  letter-spacing: -1.5px;
 }
 
 /* Custom story link marker for hover underline */
@@ -34,13 +59,13 @@
 .story-link:after {
   content: '';
   position: absolute;
-  left: 0; bottom: -1px;
+  left: 0; bottom: -2px;
   width: 100%;
   height: 2px;
   background: var(--gold);
   border-radius: 2px;
   transform: scaleX(0);
-  transition: transform 0.2s;
+  transition: transform 0.22s;
   transform-origin: right;
 }
 .story-link:hover:after {
@@ -48,7 +73,53 @@
   transform-origin: left;
 }
 
-/* Animations (via Tailwind, fallback for glass transitions) */
-.hero-title {
-  letter-spacing: -1.5px;
+/* Responsive spacing for glass panels */
+@media (max-width: 768px) {
+  .glass-panel-dark {
+    padding-left: 1.1rem !important;
+    padding-right: 1.1rem !important;
+  }
+}
+
+/* Layout adjust: force min heights for hero & smooth transitions */
+@media (max-width: 600px) {
+  #hero {
+    min-height: 420px !important;
+    padding-top: 60px !important;
+  }
+}
+
+/* Fade/scale/slide-in keyframes for intersection animations */
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(24px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+.animate-fade-in {
+  animation: fade-in 0.8s cubic-bezier(.45,.11,.27,1) both;
+}
+@keyframes scale-in {
+  0% { opacity:0; transform: scale(.98);}
+  100% { opacity:1; transform: scale(1);}
+}
+.animate-scale-in {
+  animation: scale-in 1s cubic-bezier(.38,.87,.64,1) both;
+}
+
+/* Section/container spacing tweaks */
+@media (max-width: 900px) {
+  .max-w-6xl, .max-w-7xl { max-width: 98vw !important; }
+}
+
+/* Glass footer */
+footer {
+  /* subtle inner shadow top */
+  box-shadow: 0 -7px 36px 0 rgba(0,0,0,0.21);
+  border-top: 1.5px solid rgba(191,167,106,0.10);
+}
+
+/* Highly responsive tweaks for buttons & rounded-ness */
+@media (max-width: 480px) {
+  .rounded-2xl { border-radius: 1rem !important; }
+  .rounded-xl { border-radius: .8rem !important; }
+  button, a { font-size: 1rem !important; }
 }

@@ -1,6 +1,7 @@
 
 import { useState } from "react";
-
+import { Linkedin } from "lucide-react";
+import NavBar from "@/components/NavBar";
 const testimonials = [
   {
     name: "Sarah Thompson",
@@ -30,7 +31,9 @@ const TestimonialsCarousel = () => {
   const t = testimonials[idx];
 
   return (
-    <section id="testimonials" className="py-16 px-4">
+    <div className="min-h-screen bg-slate-950 text-white font-sans antialiased flex flex-col">
+    <NavBar />
+    <section id="testimonials" className="py-16 px-4 mt-5">
       <div className="max-w-3xl mx-auto glass-panel-dark rounded-2xl shadow-2xl py-12 px-7 md:px-14 flex flex-col items-center animate-fade-in">
         <div className="flex items-center gap-4 mb-5">
           <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gold/50 shadow-lg">
@@ -56,6 +59,23 @@ const TestimonialsCarousel = () => {
         </div>
       </div>
     </section>
+    <footer className="py-8 border-t border-slate-800 bg-slate-950/70 text-center text-slate-400 font-sans text-sm backdrop-blur-2xl shadow-2xl flex flex-col items-center gap-3">
+  <div className="flex items-center gap-3 justify-center">
+    <a
+      href="https://www.linkedin.com/in/mark-crutchfield-leadership/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 px-5 py-2 rounded-md bg-gold/95 text-slate-950 font-semibold shadow-lg hover:bg-gold/90 transition"
+    >
+      <Linkedin size={22} />
+      Connect on LinkedIn
+    </a>
+  </div>
+  <span className="block mt-2 font-serif text-slate-400/80 text-xs">
+    &copy; {new Date().getFullYear()} Mark Crutchfield • Executive Leadership &amp; Strategy Advisor.
+  </span>
+</footer>
+ </div>
   );
 };
 

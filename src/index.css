@@ -17,7 +17,10 @@
     --glass-gold: #bfa76a;
   }
 }
-
+html,
+body {
+  overflow-x: hidden;
+}
 /* Glass panels for dark mode */
 .glass-panel-dark {
   background: rgba(40, 44, 55, 0.82);

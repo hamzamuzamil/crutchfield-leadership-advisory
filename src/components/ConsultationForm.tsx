@@ -35,12 +35,12 @@ const ConsultationForm = () => {
 
   return (
     <form
-      className="space-y-7 pt-2"
+      className="space-y-7 pt-2 animate-fade-in"
       onSubmit={handleSubmit}
       autoComplete="off"
     >
       <div>
-        <label className="block text-slate-700 font-semibold mb-2" htmlFor="name">
+        <label className="block text-slate-300 font-semibold mb-2" htmlFor="name">
           Name
         </label>
         <Input
@@ -50,12 +50,12 @@ const ConsultationForm = () => {
           value={form.name}
           onChange={handleChange}
           disabled={submitting}
-          className="bg-white"
+          className="bg-slate-900/80 border-gold/30 text-white"
           placeholder="Your full name"
         />
       </div>
       <div>
-        <label className="block text-slate-700 font-semibold mb-2" htmlFor="org">
+        <label className="block text-slate-300 font-semibold mb-2" htmlFor="org">
           Organisation
         </label>
         <Input
@@ -65,12 +65,12 @@ const ConsultationForm = () => {
           value={form.org}
           onChange={handleChange}
           disabled={submitting}
-          className="bg-white"
+          className="bg-slate-900/80 border-gold/30 text-white"
           placeholder="Organisation name"
         />
       </div>
       <div>
-        <label className="block text-slate-700 font-semibold mb-2" htmlFor="challenge">
+        <label className="block text-slate-300 font-semibold mb-2" htmlFor="challenge">
           Project Challenge
         </label>
         <Textarea
@@ -80,13 +80,13 @@ const ConsultationForm = () => {
           value={form.challenge}
           onChange={handleChange}
           disabled={submitting}
-          className="bg-white"
+          className="bg-slate-900/80 border-gold/30 text-white"
           placeholder="Describe your main challenge"
           rows={3}
         />
       </div>
       <div>
-        <label className="block text-slate-700 font-semibold mb-2" htmlFor="timeline">
+        <label className="block text-slate-300 font-semibold mb-2" htmlFor="timeline">
           Ideal Timeline
         </label>
         <Input
@@ -95,13 +95,13 @@ const ConsultationForm = () => {
           value={form.timeline}
           onChange={handleChange}
           disabled={submitting}
-          className="bg-white"
+          className="bg-slate-900/80 border-gold/30 text-white"
           placeholder="E.g. Q3 2025, ASAP, or specific date"
         />
       </div>
       <Button
         type="submit"
-        className="w-full mt-2 bg-mainblue hover:bg-mainblue/90 text-white font-semibold rounded-lg py-2 px-3 text-lg"
+        className="w-full mt-2 bg-gold text-slate-950 hover:bg-gold/80 font-semibold rounded-lg py-2 px-3 text-lg transition animate-scale-in"
         disabled={submitting}
       >
         {submitting ? "Sending..." : "Request Consultation"}

@@ -6,34 +6,48 @@ const services = [
     title: "Leadership advisory for complex programs",
     icon: Users,
     description:
-      "Strategic guidance and high-trust support for leaders navigating large-scale transformation. Experience across healthcare, telecom, and government.",
+      "Hands-on, high-trust support for leaders tackling transformation at scale. Guiding strategy, delivery, and culture in high-complexity, high-impact settings.",
+    image: "https://images.unsplash.com/photo-1556740772-1a741367b93e?fit=crop&w=320&q=80",
   },
   {
     title: "Trust-based transformation strategy",
     icon: Briefcase,
     description:
-      "Building resilient, people-powered transformation grounded in clarity, transparency, and stakeholder trust.",
+      "Shaping change through resilience, transparency, and true stakeholder alignment. Frameworks for clarity and sustainable impact.",
+    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?fit=crop&w=320&q=80"
   },
   {
     title: "Executive coaching & delivery consulting",
     icon: FileText,
     description:
-      "1:1 and team support for senior executives leading ambitious, high-stakes programmes. Proven results delivering sustainable change.",
-  },
+      "Structured support for senior executives and programme teams. Accelerate results with tailored coaching and clear milestones.",
+    image: "https://images.unsplash.com/photo-1519817650390-64a93db511ed?fit=crop&w=320&q=80"
+  }
 ];
 
 const ServicesSection = () => (
-  <section className="bg-lightblue w-full py-12 border-b border-slate-100">
+  <section className="bg-slate-900/80 backdrop-blur w-full py-14 border-b border-slate-800 animate-fade-in">
     <div className="max-w-7xl mx-auto px-6">
-      <h3 className="font-playfair text-2xl md:text-3xl font-bold text-mainblue mb-8 text-center">Key Service Areas</h3>
+      <h3 className="font-playfair text-2xl md:text-3xl font-bold text-gold mb-8 text-center animate-fade-in">
+        Key Service Areas
+      </h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-        {services.map(({ title, icon: Icon, description }) => (
-          <div key={title} className="bg-white rounded-xl border border-slate-200 shadow-sm p-7 flex flex-col items-start gap-5 hover:shadow-md group transition animate-scale-in">
-            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-mainblue/10 group-hover:bg-mainblue/20 transition mb-1">
-              <Icon size={30} className="text-mainblue" />
+        {services.map(({ title, icon: Icon, description, image }) => (
+          <div
+            key={title}
+            className="glass-panel-dark rounded-2xl p-6 shadow-xl border border-slate-800 bg-slate-950/60 flex flex-col items-start gap-4 hover:scale-105 transition transform duration-200 animate-scale-in"
+          >
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-36 object-cover rounded-lg mb-2 border border-gold/10"
+              loading="lazy"
+            />
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gold/20">
+              <Icon size={28} className="text-gold" />
             </div>
-            <h4 className="font-playfair text-lg font-semibold text-mainblue">{title}</h4>
-            <p className="text-slate-700 text-sm">{description}</p>
+            <h4 className="font-playfair text-lg font-semibold text-gold mb-1">{title}</h4>
+            <p className="text-white/90 text-sm">{description}</p>
           </div>
         ))}
       </div>
